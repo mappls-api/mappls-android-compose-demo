@@ -52,6 +52,9 @@ private fun MapView(): MapView {
         val lifecycleObserver = getMapLifecycleObserver(mapView)
         lifecycle.addObserver(lifecycleObserver)
         onDispose {
+            mapView.onResume()
+	        mapView.onStop()
+	        mapView.onDestroy()
             lifecycle.removeObserver(lifecycleObserver)
         }
     }
